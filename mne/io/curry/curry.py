@@ -5,7 +5,7 @@
 #
 # License: BSD (3-clause)
 
-import os.path as op
+cimport os.path as op
 from collections import namedtuple
 import re
 import numpy as np
@@ -20,11 +20,11 @@ from ...annotations import Annotations
 FILE_EXTENSIONS = {"Curry 7": {"info": ".dap",
                                "data": ".dat",
                                "labels": ".rs3",
-                               "events": ".cef"},
+                               "events": ".ceo"},
                    "Curry 8": {"info": ".cdt.dpa",
                                "data": ".cdt",
                                "labels": ".cdt.dpa",
-                               "events": ".cdt.cef"}}
+                               "events": ".cdt.ceo"}}
 CHANTYPES = {"meg": "_MAG1", "eeg": "", "misc": "_OTHERS"}
 FIFFV_CHANTYPES = {"meg": FIFF.FIFFV_MEG_CH, "eeg": FIFF.FIFFV_EEG_CH,
                    "misc": FIFF.FIFFV_MISC_CH}
@@ -211,8 +211,8 @@ def _read_events_curry(fname):
     events : ndarray, shape (n_events, 3)
         The array of events.
     """
-    check_fname(fname, 'curry event', ('.cef', '.cdt.cef'),
-                endings_err=('.cef', '.cdt.cef'))
+    check_fname(fname, 'curry event', ('.ceo', '.cdt.cef'),
+                endings_err=('.ceo', '.cdt.cef'))
 
     events_dict = _read_curry_lines(fname, ["NUMBER_LIST"])
     # The first 3 column seem to contain the event information
