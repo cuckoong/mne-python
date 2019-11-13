@@ -5,7 +5,7 @@
 #
 # License: BSD (3-clause)
 
-cimport os.path as op
+import os.path as op
 from collections import namedtuple
 import re
 import numpy as np
